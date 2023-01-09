@@ -12,7 +12,7 @@ import com.example.myapplication.constants.DataBaseConstants
 import com.example.myapplication.databinding.FragmentAllGuestsBinding
 import com.example.myapplication.view.adapter.GuestsAdapter
 import com.example.myapplication.view.listener.OnGuestListener
-import com.example.myapplication.viewmodel.AllGuestsViewModel
+import com.example.myapplication.viewmodel.GuestsViewModel
 
 
 class AllGuestsFragment : Fragment() {
@@ -20,16 +20,15 @@ class AllGuestsFragment : Fragment() {
     private var _binding: FragmentAllGuestsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: AllGuestsViewModel
+    private lateinit var viewModel: GuestsViewModel
     private val adapter = GuestsAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
-        viewModel = ViewModelProvider(this).get(AllGuestsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(GuestsViewModel::class.java)
         _binding = FragmentAllGuestsBinding.inflate(inflater, container, false)
 
-        binding.recyclerAllGuests.layoutManager = LinearLayoutManager(context)
-
-        binding.recyclerAllGuests.adapter = adapter
+        binding.recyclerGuests.layoutManager = LinearLayoutManager(context)
+        binding.recyclerGuests.adapter = adapter
 
         val listener = object : OnGuestListener {
             override fun onClick(id: Int) {
@@ -47,9 +46,7 @@ class AllGuestsFragment : Fragment() {
             }
 
         }
-
         adapter.attachListener(listener)
-
         observe()
 
         return binding.root
