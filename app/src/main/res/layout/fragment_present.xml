@@ -10,6 +10,8 @@
         android:id="@+id/recycler_guests"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        tools:itemCount="3"
+        tools:listitem="@layout/row_guest"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
